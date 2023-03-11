@@ -35,6 +35,10 @@ To use JSON Server for Angular CRUD operation, you need to follow the steps belo
 This will start the JSON Server and create a RESTful API endpoint at http://localhost:3000
 
 ## Project Screenshot
-### Employee List
-
+### Employees List
+![Employee List](https://user-images.githubusercontent.com/114358610/224508468-dc89d009-8a07-450e-ad1b-5b51c140f421.png)
+### Create Employee
+![Create Employee](https://user-images.githubusercontent.com/114358610/224508491-fd317334-e7ea-43d1-8984-f574399bd081.png)
+### Edit/Update Employee
+![Update Employee](https://user-images.githubusercontent.com/114358610/224508508-3bd4d399-6ff2-4c87-ad4b-9b9d26b02d11.png)
 
