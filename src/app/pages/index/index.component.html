@@ -1,0 +1,176 @@
+<div class="card">
+  <div class="card-header bg-white">
+    <h5 class="text-danger">
+      Employee List
+      <button class="btn btn-sm btn-primary pull-right" (click)="btnNew()" data-bs-toggle="modal" data-bs-target="#addEditModal">
+        <i class="fas fa-plus"></i> New
+      </button>
+    </h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-bordered table-sm">
+      <thead class="table-secondary">
+        <tr>
+          <th>Employee ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>DOJ</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Salary</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="employees.length>0; else noData">
+            <tr *ngFor="let emp of employees; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{emp.firstName}}</td>
+                <td>{{emp.lastName}}</td>
+                <td>{{emp.doj}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.mobile}}</td>
+                <td>{{emp.salary}}</td>
+                <td>
+                  <a [routerLink]="[]" class="text-info" data-bs-toggle="modal" data-bs-target="#viewModal" (click)="getEmpById(emp.id)"><i class="fas fa-eye"></i></a>
+                  <a [routerLink]="[]" class="text-success ms-1" data-bs-toggle="modal" data-bs-target="#addEditModal" (click)="edit(emp.id)"><i class="fas fa-edit"></i></a>
+                  <a [routerLink]="[]" class="text-danger ms-1" (click)="deleteEmployee(emp.id)"><i class="fas fa-trash"></i></a>
+                </td>
+              </tr>
+        </ng-container>
+        <ng-template #noData>
+            <tr>
+                <td colspan="8" class="text-danger">No data found</td>
+            </tr>
+        </ng-template>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Create Employee Modal -->
+<div class="modal fade" id="addEditModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-white">{{lblModalHeader}}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="modal-body">
+          <div class="form-group mb-1">
+            <div class="row">
+              <div class="col-md-3">First Name</div>
+              <div class="col-md-9">
+                <input type="text" class="form-control form-control-md" placeholder="Enter first name" formControlName="firstName"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-1">
+            <div class="row">
+              <div class="col-md-3">Last Name</div>
+              <div class="col-md-9">
+                <input type="text" class="form-control form-control-md" placeholder="Enter last name" formControlName="lastName"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-1">
+            <div class="row">
+              <div class="col-md-3">DOJ</div>
+              <div class="col-md-9">
+                <input type="text" class="form-control form-control-md" placeholder="Enter date of joining" formControlName="doj"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-1">
+            <div class="row">
+              <div class="col-md-3">Email</div>
+              <div class="col-md-9">
+                <input type="text" class="form-control form-control-md" placeholder="Enter email" formControlName="email"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-1">
+            <div class="row">
+              <div class="col-md-3">Mobile</div>
+              <div class="col-md-9">
+                <input type="text" class="form-control form-control-md" placeholder="Enter mobile no." formControlName="mobile"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3">Salary</div>
+              <div class="col-md-9">
+                <input type="text" class="form-control form-control-md" placeholder="Enter salary" formControlName="salary"/>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" #closeButton class="btn btn-sm btn-danger" data-bs-dismiss="modal">
+          <i class="fas fa-times-circle"></i> Close
+        </button>
+        <button type="submit" class="btn btn-sm btn-primary">
+          <i class="fas fa-check-circle"></i> {{lblBtn}}
+        </button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- View Employee -->
+<div class="modal fade" id="viewModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title text-white">Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered table-sm">
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td>{{objEmployee.firstName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>{{objEmployee.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of joining</td>
+                        <td>{{objEmployee.doj}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{objEmployee.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile</td>
+                        <td>{{objEmployee.mobile}}</td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td>{{objEmployee.salary}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" #closeButton class="btn btn-sm btn-danger" data-bs-dismiss="modal">
+            <i class="fas fa-times-circle"></i> Close
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Edit Employee -->
