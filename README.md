@@ -1,5 +1,5 @@
-# Employee Management CRUD Operation using Angular & JSON Web Server
-"Employee Management CRUD Operation using Angular and JSON Server" is an excellent example of how to create a full-stack web application using simple, lightweight tools. The project demonstrates how to build a powerful and dynamic web application with minimal code and setup, making it an ideal choice for developers who need to create small to medium-sized projects quickly.
+# Angular CRUD using JSON Web Server
+"Angular CRUD using JSON Server" is an excellent example of how to create a full-stack web application using simple, lightweight tools. The project demonstrates how to build a powerful and dynamic web application with minimal code and setup, making it an ideal choice for developers who need to create small to medium-sized projects quickly.
 ## Installation
 ### To create an Angular project, you can follow these steps:
 1. Install Node.js and npm: If you don't have Node.js and npm installed on your machine, download and install them from the official Node.js website.
