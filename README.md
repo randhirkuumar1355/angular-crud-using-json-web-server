@@ -36,7 +36,7 @@ This will start the JSON Server and create a RESTful API endpoint at http://loca
 
 ## Project Screenshot
 ### Employees List
-![Employee List](https://user-images.githubusercontent.com/114358610/224508468-dc89d009-8a07-450e-ad1b-5b51c140f421.png)
+![EmployeesList](https://user-images.githubusercontent.com/114358610/224525062-a6baf1a2-1bff-41aa-949f-dbfd5e7778cc.png)
 ### Create Employee
 ![Create Employee](https://user-images.githubusercontent.com/114358610/224508491-fd317334-e7ea-43d1-8984-f574399bd081.png)
 ### Edit/Update Employee
